@@ -1,1 +1,97 @@
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  color: #222;
+  background: #fff;
+}
 
+.hero {
+  display: flex;
+  align-items: stretch;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+  padding: 4rem 3rem;
+  background: linear-gradient(135deg, #2db6a3, #519ac9);
+  color: #fff;
+}
+
+.content h1 {
+  font-size: 3rem;
+  font-family: "Georgia", serif;
+  font-style: italic;
+  margin: 0 0 0.5rem;
+}
+
+.content h2 {
+  font-weight: 300;
+  margin: 0 0 1.5rem;
+}
+
+.content p,
+.content ul {
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+.musicians {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 2rem;
+}
+
+.credits {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.release {
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.listen-button {
+  display: inline-block;
+  background: #f16e00;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.listen-button:hover {
+  background: #d95f00;
+}
+
+.footer {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-top: 3rem;
+}
+
+.image-side {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+.album-cover {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  width: 40%;
+  max-width: 300px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.artist-photo {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
