@@ -81,7 +81,7 @@ body {
   background: white;
 }
 
-.album-cover {
+.album_cover {
   position: absolute;
   bottom: 2rem;
   left: 2rem;
