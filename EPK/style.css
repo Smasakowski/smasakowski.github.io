@@ -307,6 +307,105 @@ body {
   white-space: nowrap;      /* prevent wrapping */
 }
 
+
+/* ======= Video Section ======= */
+.video-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem 6%;
+  background: linear-gradient(135deg, #ff9966, #ff5e62);
+  color: #000000;
+  gap: 3rem;
+  flex-wrap: wrap; /* makes it stack on smaller screens */
+}
+
+/* Left column (text) */
+.video-content {
+  flex: 1;
+  min-width: 300px;
+  max-width: 600px;
+}
+
+.video-content h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.video-content p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  max-width: 90%;
+}
+
+/* Right column (video) */
+.video-embed {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  margin-bottom: 4rem;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+  .video-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 3rem 1.5rem;
+  }
+
+  .video-content {
+    max-width: 100%;
+  }
+
+  .video-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .video-content p {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
+  .video-embed {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .video-container {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+    margin-top: 1.5rem;
+    border-radius: 10px;
+  }
+}
+
+
+
+
+
 /* === Mobile Responsive Styles === */
 @media screen and (max-width: 768px) {
   /* Stack the hero section vertically */
@@ -330,13 +429,28 @@ body {
   }
 
   /* Adjust typography for mobile */
-  .content h1 {
-    font-size: 2.5rem;
-  }
+  .content-column h1,
+.content h1 {
+  font-size: clamp(1.8rem, 8vw, 2.8rem); /* scales smoothly */
+  line-height: 1.1;
+  word-break: break-word;                /* forces break if needed */
+  white-space: normal;                   /* allows wrapping */
+  text-align: center;                    /* centers text */
+  margin: 0 auto;
+  max-width: 90vw;                       /* keeps it from overflowing */
+}
 
-  .content h2 {
-    font-size: 1.5rem;
-  }
+
+  .content-column h2,
+.content h2 {
+  font-size: clamp(1.2rem, 5vw, 1.8rem);
+  line-height: 1.2;
+  word-break: break-word;
+  white-space: normal;
+  text-align: center;
+  margin: 0.5rem auto 1rem auto;
+  max-width: 90vw;
+}
 
   .content p,
   .content ul {
@@ -347,7 +461,7 @@ body {
   /* Center album cover on mobile */
   .album_cover {
     top: 50%;
-    width: 80%;
+    width: 100%;
     max-width: 300px;
   }
 
@@ -357,6 +471,7 @@ body {
     top: auto;
     left: auto;
     transform: none;
+    text-align: center;
     width: 100%;
     max-width: 300px;
     margin: 1rem auto;
