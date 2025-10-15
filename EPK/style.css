@@ -202,6 +202,16 @@ body {
   object-position: center;
 }
 
+/* Section 2 quote */
+.section2-quote {
+  text-align: center;      /* centers the text */
+  font-family: "Helvetica Neue", Arial, sans-serif; /* keep same font */
+  font-weight: normal;     /* match your Section 1 weight */
+  line-height: 1.6;        /* optional spacing */
+  margin: 0 auto;          /* center horizontally */
+  max-width: 600px;        /* optional: constrain width for readability */
+}
+
 /* Track list container (vertical) */
 .track-list-container {
   max-width: 300px;
