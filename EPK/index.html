@@ -9,48 +9,58 @@
 
 <body>
   <!-- ======= Hero Section ======= -->
-  <section class="hero">
-    <div class="content">
-      <h1>Steve Masakowski</h1>
-      <h2>Family & Friends</h2>
+  <!-- ======= Section 1: Hero ======= -->
+<section class="hero">
+   
 
-      <p class="intro">
-        Steve Masakowski, the patriarch of one of New Orleans’s great multigenerational jazz families, proudly announces the spring 2026 release of
-        <strong>Two Worlds</strong>, featuring:
-      </p>
+  <!-- Left column: Content -->
+  <div class="content-column">
+    <h1>Steve Masakowski</h1>
+    <h2>Family & Friends</h2>
 
-      <ul class="musicians">
-        <li><strong>Steve Masakowski</strong>, guitar</li>
-        <li><strong>Sasha Masakowski</strong>, vocals</li>
-        <li><strong>Martin Masakowski</strong>, bass</li>
-        <li><strong>Brian Blade</strong>, drums</li>
-        <li><strong>Oscar Rossignoli</strong>, piano</li>
-        <li><strong>Rex Gregory</strong>, sax</li>
-      </ul>
+    <p class="intro">
+      Steve Masakowski, the patriarch of one of New Orleans’s great multigenerational jazz families, proudly announces the spring 2026 release of
+      <strong>Two Worlds</strong>, featuring:
+    </p>
 
-      <p class="credits">
-        Recorded by <strong>Mack Major</strong> at Marigny Studios in New Orleans<br>
-        Mixed and Mastered by <strong>Mike Marciano</strong>, Systems Two NYC<br>
-        Artwork by <strong>Ulrike Maria Masakowski</strong>
-      </p>
+    <ul class="musicians">
+      <li><strong>Steve Masakowski</strong>, guitar</li>
+      <li><strong>Sasha Masakowski</strong>, vocals</li>
+      <li><strong>Martin Masakowski</strong>, bass</li>
+      <li><strong>Brian Blade</strong>, drums</li>
+      <li><strong>Oscar Rossignoli</strong>, piano</li>
+      <li><strong>Rex Gregory</strong>, sax</li>
+    </ul>
 
-      <p class="release">To be released March 6, 2026</p>
-    </div>
+    <p class="credits">
+      Recorded by <strong>Mack Major</strong> at Marigny Studios in New Orleans<br>
+      Mixed and Mastered by <strong>Mike Marciano</strong>, Systems Two NYC<br>
+      Artwork by <strong>Ulrike Maria Masakowski</strong>
+    </p>
 
-    <div class="image-side">
-      <img src="images/Steve.JPG" alt="Steve Masakowski" class="artist-photo">
-    </div>
+    <p class="release">To be released March 6, 2026</p>
 
-    <!-- Album cover + Listen button -->
-    <a href="#section2" id="album-link">
-  <div class="album-cover">
-    <img src="images/album_cover.jpeg" alt="Album cover" class="album_cover">
+    
   </div>
-</a>
 
+  <!-- Right column: Album + Artist Photo -->
+  <div class="album-column">
+
+    <!-- Artist photo container -->
+    
+
+    <!-- Album cover on top -->
+    <a href="#section2" id="album-link">
+    <img src="images/album_cover.jpeg" alt="Album cover" class="album_cover" id="album-cover">
+    </a>
 
     <a href="#section2" class="listen-button" id="listen-btn">Listen & Scroll</a>
-  </section>
+
+  </div>
+
+</section>
+
+
 
  <!-- ======= Next Section ======= -->
 <section id="section2" class="hero section2">
@@ -140,4 +150,3 @@
     document.querySelector('#section2').scrollIntoView({ behavior: 'smooth' });
   });
 </script>
-
