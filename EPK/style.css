@@ -1,3 +1,8 @@
+/* === Global Reset === */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: "Helvetica Neue", Arial, sans-serif;
@@ -14,7 +19,7 @@ body {
 
 /* === Left Side (Content - 60%) === */
 .content {
-  flex: 0 0 50%;
+  flex: 0 0 60%;
   padding: 4rem 3rem;
   background: linear-gradient(135deg, #2db6a3, #519ac9);
   color: #000000;
@@ -87,7 +92,7 @@ body {
 
 /* === Right Side (Image - 40%) === */
 .image-side {
-  flex: 0 0 50%;
+  flex: 0 0 40%;
   position: relative;
   display: flex;
   align-items: center;
@@ -153,3 +158,107 @@ body {
   width: 90%;
   max-width: 500px;
 }
+
+/* Orange section with reversed layout */
+.section2 {
+  background: linear-gradient(135deg, #f7941e, #f16e00); /* orange gradient */
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  position: relative;
+}
+
+/* Reverse layout: image left, content right */
+.section2 .hero {
+  display: flex;
+  flex-direction: row-reverse;
+  min-height: 100vh;
+  position: relative;
+}
+
+.section2 .content {
+  flex: 0 0 50%;
+  padding: 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #000; /* or white if preferred */
+}
+
+/* Left image */
+.section2 .image-side.reversed {
+  flex: 0 0 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.section2 .image-side.reversed .artist-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Track list container (vertical) */
+.track-list-container {
+  max-width: 300px;
+  margin: 2rem auto;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.track-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.track-list li {
+  padding: 0.5rem 1rem;
+  background: #222;
+  color: #fff;
+  margin-bottom: 0.3rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.track-list li:hover {
+  background: #f16e00;
+  transform: scale(1.02);
+}
+
+/* Fixed bottom audio player (full width) */
+.audio-player {
+  position: fixed;
+  
+  bottom: 0;
+  left: 0;
+  width: 100%;             /* full width */
+  background-color: #000;  /* black background */
+  color: #fff;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 -3px 15px rgba(0,0,0,0.5);
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;      /* vertically center content */
+  justify-content: center;  /* center player + text horizontally if needed */
+  gap: 1rem;                /* space between text and controls */
+  flex-wrap: wrap;          /* wrap on smaller screens */
+}
+
+/* Audio controls */
+.audio-player audio {
+  flex: 1;                 /* take remaining space */
+  max-width: 700px;
+}
+
+/* Now playing text */
+.audio-player #current-track {
+  font-weight: bold;
+  white-space: nowrap;      /* prevent wrapping */
+
+
