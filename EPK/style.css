@@ -797,3 +797,85 @@ body {
     margin-top: 2rem;
   }
 }
+
+/* === Fix hero centering + horizontal scroll on mobile === */
+@media screen and (max-width: 768px) {
+  /* Prevent horizontal scroll caused by oversized elements */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* Center all content in hero */
+  .hero {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .content-column {
+    align-items: center;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .content-column h1,
+  .content-column h2 {
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Ensure the album image stays centered */
+  .album-column {
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* === Keep text left-aligned on mobile for video + about sections === */
+@media screen and (max-width: 768px) {
+  .video-section,
+  .section5 {
+    text-align: left;
+  }
+
+  .video-content,
+  .about-content {
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .video-content h2,
+  .about-content h2 {
+    text-align: left;
+  }
+
+  .video-content p,
+  .about-content p {
+    text-align: left;
+  }
+}
+
+/* === Section 5: Text left-aligned on mobile, CTA stays centered === */
+@media screen and (max-width: 768px) {
+  .section5-text {
+    text-align: left;      /* main text left-aligned */
+  }
+
+  .section5-text p {
+    text-align: left;      /* paragraphs left-aligned */
+  }
+
+  .section5-cta {
+    text-align: center;    /* CTA stays centered */
+    margin-left: auto;
+  }
+}
+
+.section5-cta a {
+  white-space: nowrap; /* prevents line breaks */
+}
+
+
+
