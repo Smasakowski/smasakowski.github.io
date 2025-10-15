@@ -11,45 +11,76 @@ body {
   overflow-x: hidden;
 }
 
-/* === Layout === */
+/* === Section 1: Hero Layout === */
 .hero {
   display: flex;
   min-height: 100vh;
+  background: linear-gradient(135deg, #7db9d1, #0b6357);
+ /* same background for both columns */
+  background-size: cover;
+  background-position: center;
+  gap: 0rem;
+  padding: 0rem;
 }
 
-/* === Left Side (Content - 60%) === */
-.content {
-  flex: 0 0 60%;
-  padding: 4rem 3rem;
-  background: linear-gradient(135deg, #2db6a3, #519ac9);
-  color: #000000;
+.background-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9; /* adjust transparency */
+  z-index: 0;
+
+  mask-image: radial-gradient(circle, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 90%);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: cover;
+}
+
+.content-column {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* === Left column: Text content === */
+.content-column {
+  flex: 1 1 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 5rem;
+  color: #000000; /* text readable over background */
 }
 
-.content h1 {
-  font-size: 3rem;
+.content-column h1 {
   font-family: "Georgia", serif;
   font-style: italic;
+  font-size: 3rem;
   margin: 0 0 0.5rem;
 }
 
-.content h2 {
+.content-column h2 {
   font-weight: 300;
-  margin: 0 0 1.5rem;
+  font-size: 2rem;
+  margin: 0 0 1rem;
 }
 
-.content p,
-.content ul {
+.content-column p.intro {
   max-width: 500px;
   line-height: 1.6;
+  margin-bottom: 1.5rem;
 }
 
 .musicians {
   list-style: none;
   padding: 0;
   margin: 1rem 0 2rem;
+}
+
+.musicians li {
+  margin-bottom: 0.5rem;
 }
 
 .credits {
@@ -63,20 +94,14 @@ body {
 }
 
 .listen-button {
-  position: absolute;        /* position relative to .hero */
-  top: 90%;                  /* slightly below the album cover (50% top + offset) */
-  left: 50%;                 /* center horizontally */
-  transform: translateX(-50%); /* center exactly */
-  display: block;
-  width: max-content;        /* shrink to fit text */
+  display: inline-block;
   padding: 0.8rem 1.5rem;
   background: #f16e00;
   color: white;
   border-radius: 6px;
   font-weight: 600;
   text-decoration: none;
-  text-align: center;
-  z-index: 3;                /* above album cover */
+  margin-top: 2rem;
   transition: background 0.2s;
 }
 
@@ -84,84 +109,94 @@ body {
   background: #d95f00;
 }
 
-.footer {
-  font-size: 0.8rem;
-  opacity: 0.8;
-  margin-top: 3rem;
-}
-
-/* === Right Side (Image - 40%) === */
-.image-side {
-  flex: 0 0 40%;
-  position: relative;
+/* === Right column: Album + Artist photo === */
+.album-column {
+  flex: 1 1 50%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  overflow: hidden;
-  background-color: #fff;
+  align-items: center;
+  position: relative;
 }
 
-/* Background Artist Photo */
-.artist-photo {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  z-index: 1;
-  opacity: 0;
-  animation: fadeIn 1.2s ease forwards;
-}
-
-/* Centered Album Cover */
-.album_cover {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60%;
+/* Artist photo container */
+.artist-photo-container {
+  width: 70%;
   max-width: 400px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  z-index: 2;
+  border: 5px solid black;
+  margin-bottom: 2rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+.artist-photo-container img {
+  width: 100%;
+  display: block;
+  height: auto;
+}
+
+/* Album cover */
+.album_cover {
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  opacity: 0;
-  animation: fadeIn 1.5s ease forwards 0.4s;
+  z-index: 2;
 }
 
 .album_cover:hover {
-  transform: translate(-50%, -55%) scale(1.05);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.4);
 }
 
-/* === Fade-In Animation === */
-@keyframes fadeIn {
-  to {
-    opacity: 1;
+/* === Responsive adjustments === */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+  }
+  .content-column, .album-column {
+    flex: 1 1 100%;
+  }
+  .artist-photo-container, .album_cover {
+    max-width: 80%;
   }
 }
 
-/* === Optional Audio Player (fixed bottom bar) === */
+
+
+
+
+/* === Optional Audio Player (bottom) === */
 .audio-player {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #111;
-  padding: 10px;
-  text-align: center;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.4);
+  background-color: #000;
+  color: #fff;
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  box-shadow: 0 -3px 15px rgba(0,0,0,0.5);
   z-index: 1000;
 }
 
 .audio-player audio {
-  width: 90%;
-  max-width: 500px;
+  flex: 1;
+  max-width: 700px;
 }
+
+.audio-player #current-track {
+  font-weight: bold;
+  white-space: nowrap;
+}
+
 
 /* Orange section with reversed layout */
 .section2 {
-  background: linear-gradient(135deg, #f7941e, #f16e00); /* orange gradient */
+  background: linear-gradient(135deg, #dfc29e, #b76522); /* orange gradient */
   color: #fff;
   min-height: 100vh;
   display: flex;
@@ -270,5 +305,104 @@ body {
 .audio-player #current-track {
   font-weight: bold;
   white-space: nowrap;      /* prevent wrapping */
+}
 
+/* === Mobile Responsive Styles === */
+@media screen and (max-width: 768px) {
+  /* Stack the hero section vertically */
+  .hero {
+    flex-direction: column;
+    min-height: auto;
+  }
 
+  /* Full width content */
+  .content {
+    flex: 1;
+    padding: 2rem 1.5rem;
+    min-height: 60vh;
+  }
+
+  /* Full width image side */
+  .image-side {
+    flex: 1;
+    min-height: 40vh;
+    width: 100%;
+  }
+
+  /* Adjust typography for mobile */
+  .content h1 {
+    font-size: 2.5rem;
+  }
+
+  .content h2 {
+    font-size: 1.5rem;
+  }
+
+  .content p,
+  .content ul {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
+  /* Center album cover on mobile */
+  .album_cover {
+    top: 50%;
+    width: 80%;
+    max-width: 300px;
+  }
+
+  /* Make listen button more touch-friendly */
+  .listen-button {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 100%;
+    max-width: 300px;
+    margin: 1rem auto;
+    padding: 1rem;
+  }
+
+  /* Adjust track list for touch */
+  .track-list li {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Mobile-optimized audio player */
+  .audio-player {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .audio-player audio {
+    width: 100%;
+  }
+
+  .audio-player #current-track {
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 0.3rem;
+  }
+
+  /* Section 2 mobile adjustments */
+  .section2 {
+    flex-direction: column;
+  }
+
+  .section2 .hero {
+    flex-direction: column;
+  }
+
+  .section2 .content,
+  .section2 .image-side.reversed {
+    flex: 1;
+    width: 100%;
+  }
+
+  .section2-quote {
+    font-size: 1.2rem;
+    padding: 0 1rem;
+  }
+}
