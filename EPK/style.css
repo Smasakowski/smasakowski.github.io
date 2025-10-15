@@ -307,105 +307,6 @@ body {
   white-space: nowrap;      /* prevent wrapping */
 }
 
-
-/* ======= Video Section ======= */
-.video-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 4rem 6%;
-  background: linear-gradient(135deg, #ff9966, #ff5e62);
-  color: #000000;
-  gap: 3rem;
-  flex-wrap: wrap; /* makes it stack on smaller screens */
-}
-
-/* Left column (text) */
-.video-content {
-  flex: 1;
-  min-width: 300px;
-  max-width: 600px;
-}
-
-.video-content h2 {
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  letter-spacing: 0.5px;
-}
-
-.video-content p {
-  font-size: 1.2rem;
-  line-height: 1.7;
-  max-width: 90%;
-}
-
-/* Right column (video) */
-.video-embed {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.video-container {
-  position: relative;
-  width: 100%;
-  max-width: 560px;
-  aspect-ratio: 16 / 9;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-  margin-bottom: 4rem;
-}
-
-.video-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-/* Mobile adjustments */
-@media screen and (max-width: 768px) {
-  .video-section {
-    flex-direction: column;
-    text-align: center;
-    padding: 3rem 1.5rem;
-  }
-
-  .video-content {
-    max-width: 100%;
-  }
-
-  .video-content h2 {
-    font-size: 1.8rem;
-  }
-
-  .video-content p {
-    font-size: 1rem;
-    max-width: 100%;
-  }
-
-  .video-embed {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .video-container {
-    width: 100%;
-    max-width: 100%;
-    aspect-ratio: 16 / 9;
-    margin-top: 1.5rem;
-    border-radius: 10px;
-  }
-}
-
-
-
-
-
 /* === Mobile Responsive Styles === */
 @media screen and (max-width: 768px) {
   /* Stack the hero section vertically */
@@ -429,28 +330,13 @@ body {
   }
 
   /* Adjust typography for mobile */
-  .content-column h1,
-.content h1 {
-  font-size: clamp(1.8rem, 8vw, 2.8rem); /* scales smoothly */
-  line-height: 1.1;
-  word-break: break-word;                /* forces break if needed */
-  white-space: normal;                   /* allows wrapping */
-  text-align: center;                    /* centers text */
-  margin: 0 auto;
-  max-width: 90vw;                       /* keeps it from overflowing */
-}
+  .content h1 {
+    font-size: 2.5rem;
+  }
 
-
-  .content-column h2,
-.content h2 {
-  font-size: clamp(1.2rem, 5vw, 1.8rem);
-  line-height: 1.2;
-  word-break: break-word;
-  white-space: normal;
-  text-align: center;
-  margin: 0.5rem auto 1rem auto;
-  max-width: 90vw;
-}
+  .content h2 {
+    font-size: 1.5rem;
+  }
 
   .content p,
   .content ul {
@@ -461,7 +347,7 @@ body {
   /* Center album cover on mobile */
   .album_cover {
     top: 50%;
-    width: 100%;
+    width: 80%;
     max-width: 300px;
   }
 
@@ -471,7 +357,6 @@ body {
     top: auto;
     left: auto;
     transform: none;
-    text-align: center;
     width: 100%;
     max-width: 300px;
     margin: 1rem auto;
@@ -519,5 +404,396 @@ body {
   .section2-quote {
     font-size: 1.2rem;
     padding: 0 1rem;
+  }
+}
+
+/* ======= Video Section ======= */
+.video-section {
+  position: relative;
+  display: flex;
+  gap: 2rem;
+  padding: 4rem 2rem;
+  overflow: hidden; /* ensures the blur doesn't overflow */
+  color: white;
+  align-items: flex-start;
+}
+
+/* Blurred background */
+.video-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('images/steve_studio.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(15px);
+  z-index: 0;
+}
+
+/* Dark overlay */
+.video-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0,0,0,0.6); /* dark overlay */
+  z-index: 0;
+}
+
+/* Left column (text) */
+.video-content {
+  flex: 1;
+  min-width: 300px;
+  max-width: 600px;
+  position: relative;
+  z-index: 1;
+}
+
+.video-content h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.video-content p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+}
+
+/* Right column (video + photos) */
+.video-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  min-width: 300px;
+}
+
+/* Video container */
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  margin-bottom: 2rem;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Photo grid */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  width: 100%;
+  max-width: 560px;
+}
+
+.photo-grid img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* ======= Blue Gradient Section (Section 4) ======= */
+.section4 {
+  display: flex;
+  min-height: 80vh;
+  background: linear-gradient(135deg, #c8d3ec, #08763a);
+  color: white;
+  padding: 0;
+  gap: 0;
+  align-items: stretch;
+}
+
+/* Left column: Track list */
+.blue-content {
+  flex: 1 1 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 2rem;
+  box-sizing: border-box;
+}
+
+.blue-content h2 {
+  text-align: center;           
+  font-family: "Georgia", serif;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: black;
+}
+
+/* Track list container */
+.track-list-container {
+  display: flex;
+  justify-content: center;      /* center the container */
+  margin: 0 auto 2rem auto;     /* vertical spacing, center horizontally */
+}
+
+/* Track list itself */
+.track-list {
+  width: 100%;                    /* wider list in the column */
+  max-width: 1000px;              /* optional max width */
+}
+
+/* Track items */
+.track-list li {
+  background: #222;
+  color: #fff;
+  padding: 0.6rem 1rem;          /* reduce vertical padding to shorten list */
+  margin-bottom: 0.4rem;         /* smaller gap between items */
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  text-align: left;
+}
+
+.track-list li:hover {
+  background: #f16e00;
+  transform: scale(1.02);
+}
+
+.track-list li .track-artist {
+  font-size: 0.85rem;            /* slightly smaller artist text */
+  font-weight: 300;
+  color: #ddd;
+  display: block;
+  margin-top: 0.2rem;
+  text-align: left;
+}
+
+.track-contact {
+  margin-top: 2rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: white;             /* ensures text is readable on the blue gradient */
+}
+
+.track-contact a {
+  color: #000000;           /* highlight email link */
+  text-decoration: none;
+}
+
+.track-contact a:hover {
+  text-decoration: underline;
+}
+
+/* Right column: Image */
+.blue-image {
+  flex: 0 0 40%;
+  overflow: hidden;
+}
+
+.blue-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+/* ======= Mobile Responsive ======= */
+@media screen and (max-width: 768px) {
+  .video-section,
+  .section4 {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .video-content,
+  .video-column,
+  .blue-content,
+  .blue-image {
+    max-width: 100%;
+  }
+
+  .video-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .video-content p {
+    font-size: 1rem;
+  }
+
+  .video-container {
+    max-width: 100%;
+    margin: 0 auto 2rem;
+    border-radius: 10px;
+  }
+
+  .photo-grid {
+    grid-template-columns: 1fr 1fr;
+    max-width: 100%;
+  }
+
+  .blue-content {
+    padding: 2rem 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .blue-image {
+    flex: 1 1 100%;
+    width: 100%;
+    height: auto;
+  }
+
+  .track-list-container {
+    max-width: 100%;
+  }
+}
+
+
+/* ======= Section 5: About the Masakowski Family ======= */
+/* Section 5 */
+.section5 {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #9cb0a8, #e0e0e0);
+  color: #222;
+  padding: 4rem 2rem;
+}
+
+.section5-title {
+  text-align: center;
+  font-family: "Georgia", serif;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #002611;
+}
+
+.section5-content {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+/* Text split into two columns */
+.section5-text {
+  flex: 1 1 60%;
+  column-count: 2;           /* split into two columns */
+  column-gap: 2rem;          /* spacing between text columns */
+  font-size: 0.95rem;        /* smaller font */
+  line-height: 1.6;
+  font-family: "Georgia", serif;
+  margin-bottom: 3rem;       /* added larger bottom margin */
+}
+
+/* Highlight links */
+.section5-text .highlight-link {
+  color: #08763a;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Right image column */
+.section5-image {
+  flex: 0 0 40%;
+  display: flex;
+  align-items: flex-start;
+}
+
+.section5-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.section5-cta {
+  font-family: "Georgia", serif;
+  margin: 3rem auto 6rem auto; /* centers the block horizontally */
+  color: #222;
+  max-width: 65%;
+  text-align: center; /* all text centered */
+}
+
+.section5-cta p {
+  margin: 1rem 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.section5-cta a {
+  color: #08763a;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.section5-cta a:hover {
+  color: #0b4f2b;
+}
+
+/* Styled button similar to Listen button */
+.join-button {
+  display: inline-block;
+  margin: 1.2rem auto;
+  padding: 0.8rem 1.5rem;
+  background: #f16e00;
+  color: rgb(0, 0, 0);
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.join-button:hover {
+  background: #d95f00;
+}
+
+
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+  .section5-content {
+    flex-direction: column;
+  }
+
+  
+  .section5-text {
+    column-count: 1;
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 4rem;     /* extra space on mobile */
+  }
+
+  .section5-image {
+    flex: 1 1 100%;
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+/* ======= Mobile Responsive ======= */
+@media screen and (max-width: 768px) {
+  .section5 {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .section5-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .section5-image {
+    flex: 1 1 100%;
+    width: 100%;
+    height: auto;
+    margin-top: 2rem;
   }
 }
