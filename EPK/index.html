@@ -8,6 +8,7 @@
 </head>
 
 <body>
+  <!-- ======= Hero Section ======= -->
   <section class="hero">
     <div class="content">
       <h1>Steve Masakowski</h1>
@@ -34,24 +35,108 @@
       </p>
 
       <p class="release">To be released March 6, 2026</p>
-
-      <a href="#" class="listen-button">Click here to listen</a>
-
-      <p class="footer">Page 1 of 5 &nbsp; | &nbsp; Press right &gt; to continue</p>
     </div>
-<div class="image-side">
-  <img src="images/Steve.JPG" alt="Steve Masakowski" class="artist-photo">
-</div>
-<div class="album-cover">
-  <img src="images/album_cover.jpeg" alt="Album cover" class="album_cover">
-</div>
+
+    <div class="image-side">
+      <img src="images/Steve.JPG" alt="Steve Masakowski" class="artist-photo">
+    </div>
+
+    <!-- Album cover + Listen button -->
+    <a href="#section2" id="album-link">
+  <div class="album-cover">
+    <img src="images/album_cover.jpeg" alt="Album cover" class="album_cover">
+  </div>
+</a>
+
+
+    <a href="#section2" class="listen-button" id="listen-btn">Listen & Scroll</a>
   </section>
 
-  <!-- Optional Audio Player -->
-  <!--
-  <div class="audio-player">
-    <audio controls src="audio/Two_Worlds_Sample.mp3"></audio>
+ <!-- ======= Next Section ======= -->
+<section id="section2" class="hero section2">
+  <div class="image-side reversed">
+    <img src="images/family.jpeg" alt="Track Image" class="artist-photo">
   </div>
-  -->
-</body>
-</html>
+
+  <div class="content">
+    <h2>"The Masakowski Family stands at the heart of New Orleans' modern jazz scene, carrying forward a rich tradition
+        of musical innovation and artistry across generations."<br>
+        <em>-OffBeat Magazine</em>"
+    </h2>
+
+    
+
+  <!-- Track list (vertical) -->
+<div class="track-list-container">
+  <ul class="track-list">
+    <li data-src="audio/01 Two Worlds.wav" data-title="Two Worlds">01 - Two Worlds</li>
+    <li data-src="audio/02 Ya Know They Know.wav" data-title="Ya Know They Know">02 - Ya Know They Know</li>
+    <li data-src="audio/03 Origin of Sin.wav" data-title="Origin of Sin">03 - Origin of Sin</li>
+    <li data-src="audio/04 A Love Song.wav" data-title="A Love Song">04 - A Love Song</li>
+    <li data-src="audio/05 Las Sonrisas del Mar.wav" data-title="Las Sonrisas del Mar">05 - Las Sonrisas del Mar</li>
+    <li data-src="audio/06 Sweet Dreams.wav" data-title="Sweet Dreams">06 - Sweet Dreams</li>
+    <li data-src="audio/07 Shine.wav" data-title="Shine">07 - Shine</li>
+    <li data-src="audio/08 North Wind (intro).wav" data-title="North Wind (Intro)">08 - North Wind (Intro)</li>
+    <li data-src="audio/09 North Wind.wav" data-title="North Wind">09 - North Wind</li>
+  </ul>
+</div>
+
+<!-- Fixed bottom audio player -->
+<div class="audio-player">
+  <audio id="epk-audio" controls>
+    <source src="audio/01 Two Worlds.wav" type="audio/wav">
+  </audio>
+  <div id="current-track">Now playing: Two Worlds</div>
+</div>
+
+
+</section>
+
+
+
+<!-- ======= JavaScript ======= -->
+<script>
+  // === Elements ===
+  const audio = document.getElementById('epk-audio');
+  const trackDisplay = document.getElementById('current-track');
+  const trackItems = document.querySelectorAll('.track-list li');
+  const albumLink = document.getElementById('album-link');
+
+  // === Track list click ===
+  trackItems.forEach(track => {
+    track.addEventListener('click', () => {
+      const src = track.dataset.src;
+      const title = track.dataset.title;
+
+      audio.src = src;
+      audio.play();
+      trackDisplay.textContent = "Now playing: " + title;
+
+      // Highlight active track
+      trackItems.forEach(t => t.classList.remove('active'));
+      track.classList.add('active');
+    });
+  });
+
+  // === Album cover click ===
+  albumLink.addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent default link jump
+
+    // Play the first track automatically
+    const firstTrack = trackItems[0];
+    const src = firstTrack.dataset.src;
+    const title = firstTrack.dataset.title;
+
+    audio.src = src;
+    audio.play();
+    trackDisplay.textContent = "Now playing: " + title;
+
+    // Highlight first track
+    trackItems.forEach(t => t.classList.remove('active'));
+    firstTrack.classList.add('active');
+
+    // Smooth scroll to Section 2
+    document.querySelector('#section2').scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
+
