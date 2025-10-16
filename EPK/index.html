@@ -287,12 +287,17 @@
   // === Elements ===
   const audio = document.getElementById('epk-audio');
   const trackDisplay = document.getElementById('current-track');
-  const trackItems = document.querySelectorAll('.track-list li');
+  const trackItems = Array.from(document.querySelectorAll('.track-list li'));
   const listenButton = document.querySelector('.listen-button');
   const albumCover = document.querySelector('.album_cover');
 
-  // === Function to play a track ===
-  function playTrack(trackElement) {
+  let currentTrackIndex = 0;
+
+  // === Function to play a track by index ===
+  function playTrackByIndex(index) {
+    if (index < 0 || index >= trackItems.length) return;
+
+    const trackElement = trackItems[index];
     const src = trackElement.dataset.src;
     const title = trackElement.dataset.title;
     audio.src = src;
@@ -302,30 +307,38 @@
     // Highlight active track
     trackItems.forEach(t => t.classList.remove('active'));
     trackElement.classList.add('active');
+
+    currentTrackIndex = index;
   }
 
   // === Track list click ===
-  trackItems.forEach(track => {
-    track.addEventListener('click', () => playTrack(track));
+  trackItems.forEach((track, index) => {
+    track.addEventListener('click', () => playTrackByIndex(index));
   });
 
   // === Listen button click ===
   listenButton.addEventListener('click', (e) => {
     e.preventDefault();
-    if (trackItems.length > 0) {
-      playTrack(trackItems[0]); // play first track
-      document.querySelector('#section2').scrollIntoView({ behavior: 'smooth' });
-    }
+    playTrackByIndex(0); // play first track
+    document.querySelector('#section2').scrollIntoView({ behavior: 'smooth' });
   });
 
   // === Album cover click ===
   albumCover.addEventListener('click', (e) => {
     e.preventDefault();
-    if (trackItems.length > 0) {
-      playTrack(trackItems[0]); // play first track
-      document.querySelector('#section4').scrollIntoView({ behavior: 'smooth' });
+    playTrackByIndex(0); // play first track
+    document.querySelector('#section4').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // === Auto-play next track when current ends ===
+  audio.addEventListener('ended', () => {
+    const nextIndex = currentTrackIndex + 1;
+    if (nextIndex < trackItems.length) {
+      playTrackByIndex(nextIndex);
+    } else {
+      // Optionally loop back to the first track:
+      // playTrackByIndex(0);
     }
   });
 </script>
 
-</script>
