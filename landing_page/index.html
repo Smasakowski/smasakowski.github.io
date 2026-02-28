@@ -1,1 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Release – Your Artist Name</title>
 
+  <!-- Meta Pixel / Conversion tracking placeholder -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/>
+  </noscript>
+
+  <style>
+    /* Body with animated gradient background */
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #fff;
+
+      /* Animated gradient */
+      background: linear-gradient(135deg, #7db9d1, #0b6357, #162447);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      max-width: 480px;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    img {
+      width: 100%;
+      max-width: 300px; /* limits album cover size */
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      opacity: 0.8;
+      margin-bottom: 1.5rem;
+    }
+
+    a.button {
+      display: inline-block;
+      background: #1DB954;
+      color: black;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 16px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    a.button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(29,185,84,0.35);
+    }
+
+    .small {
+      margin-top: 1rem;
+      font-size: 14px;
+      opacity: 0.6;
+    }
+
+    input[type="email"] {
+      padding: 12px;
+      width: 70%;
+      border-radius: 6px;
+      border: none;
+      margin-bottom: 1rem;
+      font-size: 14px;
+    }
+
+    button.submit {
+      padding: 12px 20px;
+      background: #1DB954;
+      color: black;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    button.submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(29,185,84,0.35);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Cover Art -->
+    <img src="../EPK/images/album_cover.jpeg" alt="Release Artwork">
+
+    <!-- Title & Info -->
+    <h1>Your Track Title</h1>
+    <p>Out now on Spotify 🌊</p>
+
+    <!-- Spotify / Presave Button -->
+    <a class="button" href="SPOTIFY_OR_PRESAVE_LINK" target="_blank" onclick="fbq('track', 'Lead');">
+      Listen on Spotify
+    </a>
+
+    <!-- Optional Email Capture -->
+    <form id="emailForm" onsubmit="submitEmail(event)">
+      <input type="email" id="email" placeholder="Your email for updates" required>
+      <button type="submit" class="submit">Sign Up</button>
+    </form>
+
+    <div class="small">
+      Thank you for supporting independent music ❤️
+    </div>
+  </div>
+
+  <script>
+    function submitEmail(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      alert(`Thanks! ${email} has been added to the mailing list.`);
+      fbq('track', 'CompleteRegistration');
+      document.getElementById('emailForm').reset();
+    }
+  </script>
+</body>
+</html>
