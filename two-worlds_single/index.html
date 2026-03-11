@@ -12,13 +12,13 @@
   <meta property="og:url" content="https://steve-masakowski.com/landing-page.html">
   <meta property="og:type" content="music.song">
 
-  <!-- Optional Twitter Card -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Two Worlds – Steve Masakowski">
   <meta name="twitter:description" content="Out now on Spotify, Apple Music, and more!">
   <meta name="twitter:image" content="https://steve-masakowski.com/EPK/images/album_cover.jpeg">
 
-  <!-- Meta Pixel / Conversion tracking placeholder -->
+  <!-- Meta Pixel -->
   <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -28,12 +28,18 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
+
     fbq('init', 'YOUR_PIXEL_ID');
     fbq('track', 'PageView');
   </script>
   <noscript>
-    <img height="1" width="1" style="display:none"
-         src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/>
+    <img
+      height="1"
+      width="1"
+      style="display:none"
+      src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"
+      alt=""
+    />
   </noscript>
 
   <style>
@@ -48,6 +54,8 @@
       background: linear-gradient(135deg, #7db9d1, #0b6357, #162447);
       background-size: 400% 400%;
       animation: gradientShift 15s ease infinite;
+      padding: 24px;
+      box-sizing: border-box;
     }
 
     @keyframes gradientShift {
@@ -57,293 +65,253 @@
     }
 
     .container {
-      max-width: 480px;
+      max-width: 520px;
+      width: 100%;
       padding: 2rem;
       text-align: center;
+      background: rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      backdrop-filter: blur(10px);
+      box-sizing: border-box;
     }
 
     .cover-art {
       width: 100%;
       max-width: 300px;
       height: auto;
-      border-radius: 0;
+      border-radius: 12px;
       margin-bottom: 1.5rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
     }
 
     h1 {
       font-size: 2rem;
-      margin-bottom: 0.5rem;
+      margin: 0 0 0.5rem;
     }
 
     p {
-      opacity: 0.8;
-      margin-bottom: 1.5rem;
+      opacity: 0.88;
+      margin: 0 0 1.5rem;
     }
 
     .streaming-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 1.5rem;
-}
-
-.streaming-links a {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(255, 255, 255, 0.14);
-  color: #fff;
-  padding: 10px 14px;
-  border-radius: 999px;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 14px;
-  border: 1px solid rgba(255,255,255,0.15);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-  backdrop-filter: blur(6px);
-}
-
-.streaming-links a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-  background: rgba(255,255,255,0.22);
-}
-
-.platform-icon {
-  width: 24px;
-  height: 24px;
-  border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 24px;
-}
-
-.platform-icon svg {
-  width: 14px;
-  height: 14px;
-  display: block;
-  fill: white;
-}
-
-.platform-spotify {
-  background: #1DB954;
-}
-
-.platform-bandcamp {
-  background: #629aa9;
-}
-
-.platform-pandora {
-  background: #3668ff;
-}
-
-.platform-tidal {
-  background: #111111;
-}
-
-.platform-apple {
-  background: #fa243c;
-}
-
-.platform-youtube {
-  background: #ff0000;
-}
-
-.platform-amazon {
-  background: #00a8e1;
-}
-
-.platform-deezer {
-  background: linear-gradient(135deg, #ff005d, #ff7a00, #ffd000);
-}
-
-.platform-soundcloud {
-  background: #ff5500;
-}
-
-@media (max-width: 520px) {
-  .streaming-links a {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
-      input[type="email"] {
-        width: 100%;
-        box-sizing: border-box;
-      }
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 1.75rem;
     }
 
+    .streaming-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.14);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 14px;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      backdrop-filter: blur(6px);
+    }
+
+    .streaming-links a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      background: rgba(255,255,255,0.22);
+    }
+
+    .platform-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 24px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .platform-spotify { background: #1DB954; }
+    .platform-bandcamp { background: #629aa9; }
+    .platform-pandora { background: #3668ff; }
+    .platform-tidal { background: #111111; }
+    .platform-apple { background: #fa243c; }
+    .platform-amazon { background: #00a8e1; }
+    .platform-itunes { background: #b145ff; }
+
+    form {
+      margin-top: 1rem;
+    }
+
+    input[type="email"] {
+      padding: 12px;
+      width: 100%;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 1rem;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    button.submit {
+      padding: 12px 20px;
+      background: #1DB954;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    button.submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(29,185,84,0.35);
+    }
 
     button.submit:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
 
-#formMessage {
-  margin-top: 0.75rem;
-  font-size: 14px;
-  color: #fff;
-}
-    
+    #formMessage {
+      margin-top: 0.75rem;
+      font-size: 14px;
+      color: #fff;
+      display: none;
+    }
+
+    .small {
+      margin-top: 1rem;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        padding: 1.5rem;
+      }
+
+      .streaming-links a {
+        width: 100%;
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <!-- Cover Art -->
-    <img class="cover-art" src="../EPK/images/album_cover.jpeg" alt="Release Artwork">
+    <img class="cover-art" src="../EPK/images/album_cover.jpeg" alt="Two Worlds artwork">
 
-    <!-- Title & Info -->
     <h1>Two Worlds</h1>
     <p>Out now on your favorite platforms 🌊</p>
 
-    <!-- Streaming Links -->
     <div class="streaming-links">
-  <a href="https://open.spotify.com/track/3cBBF38RVMKqkVFuHVgb5S" target="_blank" onclick="fbq('track', 'Lead');">
-    <span class="platform-icon platform-spotify" aria-hidden="true">
-      <svg viewBox="0 0 24 24">
-        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.503 17.297a.748.748 0 0 1-1.03.247c-2.82-1.723-6.372-2.113-10.56-1.16a.75.75 0 1 1-.333-1.462c4.581-1.043 8.511-.597 11.676 1.336a.748.748 0 0 1 .247 1.039zm1.47-3.27a.936.936 0 0 1-1.288.309c-3.227-1.984-8.146-2.56-11.963-1.402a.938.938 0 0 1-.544-1.795c4.36-1.322 9.78-.684 13.487 1.596.44.27.58.846.308 1.292zm.126-3.406C15.23 8.322 8.852 8.11 5.16 9.23a1.124 1.124 0 1 1-.652-2.15c4.24-1.287 11.292-1.037 15.763 1.617a1.124 1.124 0 0 1-1.172 1.924z"/>
-      </svg>
-    </span>
-    <span>Spotify</span>
-  </a>
+      <a href="https://open.spotify.com/track/3cBBF38RVMKqkVFuHVgb5S" target="_blank" rel="noopener noreferrer" onclick="fbq('track','Lead',{platform:'Spotify'});">
+        <span class="platform-icon platform-spotify">S</span>
+        Spotify
+      </a>
 
-  <a href="https://stevemasakowski.bandcamp.com/track/two-worlds" target="_blank">
-    <span class="platform-icon platform-bandcamp" aria-hidden="true">
-      <svg viewBox="0 0 24 24">
-        <path d="M5.04 17.86 9.9 6.14H19L14.14 17.86H5.04z"/>
-      </svg>
-    </span>
-    <span>Bandcamp</span>
-  </a>
+      <a href="https://music.apple.com/us/album/_/1876748266?app=music&at=1000lHKX&ct=odesli_http&i=1876748267&itscg=30200&itsct=odsl_m&ls=1&mt=1" target="_blank" rel="noopener noreferrer" onclick="fbq('track','Lead',{platform:'AppleMusic'});">
+        <span class="platform-icon platform-apple">A</span>
+        Apple Music
+      </a>
 
-  <a href="https://www.pandora.com/TR:195139866" target="_blank">
-    <span class="platform-icon platform-pandora" aria-hidden="true">
-      <svg viewBox="0 0 24 24">
-        <path d="M6 3h5.45C16.44 3 20 6.1 20 10.7c0 4.38-3.2 7.27-7.95 7.27H10.1V21H6V3zm4.1 11.42h1.66c2.35 0 4.08-1.2 4.08-3.57 0-2.25-1.56-3.39-3.85-3.39H10.1v6.96z"/>
-      </svg>
-    </span>
-    <span>Pandora</span>
-  </a>
+      <a href="https://stevemasakowski.bandcamp.com/track/two-worlds" target="_blank" rel="noopener noreferrer" onclick="fbq('track','Lead',{platform:'Bandcamp'});">
+        <span class="platform-icon platform-bandcamp">B</span>
+        Bandcamp
+      </a>
 
-  <a href="https://listen.tidal.com/track/502653531" target="_blank">
-    <span class="platform-icon platform-tidal" aria-hidden="true">
-      <svg viewBox="0 0 24 24">
-        <path d="M12 4.5 9.5 7 12 9.5 14.5 7 12 4.5zm-5 5L4.5 12 7 14.5 9.5 12 7 9.5zm10 0L14.5 12 17 14.5 19.5 12 17 9.5zm-5 5L9.5 17 12 19.5 14.5 17 12 14.5z"/>
-      </svg>
-    </span>
-    <span>Tidal</span>
-  </a>
+      <a href="https://www.pandora.com/artist/steve-masakowski/2-worlds-feat-sasha-masakowski-brian-blade-martin-masakowski-oscar-rossignoli-and-rex-gregory/2-worlds-feat-sasha-masakowski-brian-blade-martin-masakowski-oscar-rossignoli-and-rex-gregory/TRbrgmKZ9tdkKqq" target="_blank" rel="noopener noreferrer" onclick="fbq('track','Lead',{platform:'Pandora'});">
+        <span class="platform-icon platform-pandora">P</span>
+        Pandora
+      </a>
 
-  <!-- Uncomment when ready -->
-  <!--
-  <a href="APPLE_MUSIC_LINK" target="_blank">
-    <span class="platform-icon platform-apple" aria-hidden="true">
-      <svg viewBox="0 0 24 24">
-        <path d="M16.365 1.43c0 1.14-.466 2.24-1.14 3.02-.73.84-1.93 1.48-3.02 1.39-.14-1.08.39-2.24 1.09-3 .77-.84 2.02-1.45 3.07-1.41zM19.5 17.07c-.5 1.16-.74 1.67-1.38 2.68-.88 1.39-2.12 3.13-3.65 3.15-1.36.01-1.71-.89-3.56-.88-1.85.01-2.24.9-3.6.89-1.53-.02-2.7-1.59-3.58-2.98-2.46-3.89-2.72-8.46-1.2-10.79 1.08-1.66 2.78-2.64 4.38-2.64 1.63 0 2.66.89 4.01.89 1.31 0 2.11-.89 3.99-.89 1.42 0 2.94.77 4.02 2.09-3.53 1.93-2.96 6.95.57 8.48z"/>
-      </svg>
-    </span>
-    <span>Apple Music</span>
-  </a>
+      <a href="https://music.amazon.com/albums/B0GQCW6B47?trackAsin=B0GQD667WP" target="_blank" rel="noopener noreferrer" onclick="fbq('track','Lead',{platform:'AmazonMusic'});">
+        <span class="platform-icon platform-amazon">AM</span>
+        Amazon Music
+      </a>
 
-  <a href="YOUTUBE_MUSIC_LINK" target="_blank">
-    <span class="platform-icon platform-youtube" aria-hidden="true">
-      <svg viewBox="0 0 24 24">
-        <path d="M10 8.5v7l6-3.5-6-3.5z"/>
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18.2A8.2 8.2 0 1 1 12 3.8a8.2 8.2 0 0 1 0 16.4z"/>
-      </svg>
-    </span>
-    <span>YouTube Music</span>
-  </a>
+      <a href="https://listen.tidal.com/track/502653531" target="_blank" rel="noopener noreferrer" onclick="fbq('track','Lead',{platform:'Tidal'});">
+        <span class="platform-icon platform-tidal">T</span>
+        TIDAL
+      </a>
 
-  <a href="AMAZON_MUSIC_LINK" target="_blank">
-    <span class="platform-icon platform-amazon" aria-hidden="true">
-      <svg viewBox="0 0 24 24">
-        <path d="M12 5.5 6.5 19h2.4l1.15-2.95h4.9L16.1 19h2.4L13 5.5h-1zm.5 3.5 1.6 4.2h-3.2L12.5 9z"/>
-      </svg>
-    </span>
-    <span>Amazon Music</span>
-  </a>
+      <a href="https://music.apple.com/us/album/_/1876748266?app=itunes&at=1000lHKX&ct=odesli_http&i=1876748267&itscg=30200&itsct=odsl_m&ls=1&mt=1" target="_blank" rel="noopener noreferrer" onclick="fbq('track','Lead',{platform:'iTunes'});">
+        <span class="platform-icon platform-itunes">i</span>
+        iTunes
+      </a>
+    </div>
 
-  <a href="DEEZER_LINK" target="_blank">
-    <span class="platform-icon platform-deezer" aria-hidden="true">
-      <svg viewBox="0 0 24 24">
-        <path d="M3 15h3v4H3zm4-3h3v7H7zm4-3h3v10h-3zm4 2h3v8h-3zm4-4h3v12h-3z"/>
-      </svg>
-    </span>
-    <span>Deezer</span>
-  </a>
+    <form id="emailForm">
+      <input type="email" id="email" placeholder="Your email for updates" required>
+      <button type="submit" class="submit">Sign Up</button>
+    </form>
 
-  <a href="SOUNDCLOUD_LINK" target="_blank">
-    <span class="platform-icon platform-soundcloud" aria-hidden="true">
-      <svg viewBox="0 0 24 24">
-        <path d="M9.5 18h9.25a3.25 3.25 0 0 0 .23-6.49 5.25 5.25 0 0 0-10.29-.76A3.25 3.25 0 0 0 9.5 18zM4 10.5h1V18H4zm2 1h1V18H6zm2-2h1V18H8z"/>
-      </svg>
-    </span>
-    <span>SoundCloud</span>
-  </a>
-  -->
-</div>
+    <div id="formMessage"></div>
 
-    <!-- Email Capture -->
-    <!-- 
-<form id="emailForm">
-  <input type="email" id="email" placeholder="Your email for updates" required>
-  <button type="submit" class="submit">Sign Up</button>
-</form>
+    <div class="small">
+      By signing up, you agree to receive occasional updates.
+    </div>
 
-<div id="formMessage" class="small" style="display:none;"></div>
+    <div class="small">
+      Thank you for supporting independent music ❤️
+    </div>
+  </div>
 
-<script>
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw0su4Fx6FaDsziKb9K6ab7MZbGd4S0ESDoEBhe9pxHNkT2XYaabQHtxpODEAqygoB_/exec";
+  <script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw0su4Fx6FaDsziKb9K6ab7MZbGd4S0ESDoEBhe9pxHNkT2XYaabQHtxpODEAqygoB_/exec";
 
-  document.getElementById("emailForm").addEventListener("submit", submitEmail);
+    document.getElementById("emailForm").addEventListener("submit", submitEmail);
 
-  async function submitEmail(e) {
-    e.preventDefault();
+    async function submitEmail(e) {
+      e.preventDefault();
 
-    const form = document.getElementById("emailForm");
-    const emailInput = document.getElementById("email");
-    const message = document.getElementById("formMessage");
-    const submitButton = form.querySelector(".submit");
-    const email = emailInput.value.trim();
+      const form = document.getElementById("emailForm");
+      const emailInput = document.getElementById("email");
+      const message = document.getElementById("formMessage");
+      const submitButton = form.querySelector(".submit");
+      const email = emailInput.value.trim();
 
-    if (!email) return;
+      if (!email) return;
 
-    submitButton.disabled = true;
-    submitButton.textContent = "Signing Up...";
+      submitButton.disabled = true;
+      submitButton.textContent = "Signing Up...";
 
-    const formData = new FormData();
-    formData.append("email", email);
+      const formData = new FormData();
+      formData.append("email", email);
 
-    try {
-      await fetch(SCRIPT_URL, {
-        method: "POST",
-        body: formData
-      });
+      try {
+        await fetch(SCRIPT_URL, {
+          method: "POST",
+          body: formData
+        });
 
-      if (typeof fbq !== "undefined") {
-        fbq("track", "CompleteRegistration");
+        if (typeof fbq !== "undefined") {
+          fbq("track", "CompleteRegistration");
+        }
+
+        message.style.display = "block";
+        message.textContent = "Thanks! You’ve been added to the mailing list.";
+        form.reset();
+      } catch (error) {
+        console.error("Email signup failed:", error);
+        message.style.display = "block";
+        message.textContent = "Something went wrong. Please try again.";
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Sign Up";
       }
-
-      message.style.display = "block";
-      message.textContent = "Thanks! You’ve been added to the mailing list.";
-      message.style.opacity = "1";
-      form.reset();
-    } catch (error) {
-      console.error("Email signup failed:", error);
-      message.style.display = "block";
-      message.textContent = "Something went wrong. Please try again.";
-      message.style.opacity = "1";
-    } finally {
-      submitButton.disabled = false;
-      submitButton.textContent = "Sign Up";
     }
-  }
-</script>
-    -->
+  </script>
 </body>
 </html>
