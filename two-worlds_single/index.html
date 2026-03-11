@@ -175,6 +175,19 @@
         box-sizing: border-box;
       }
     }
+
+
+    button.submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+#formMessage {
+  margin-top: 0.75rem;
+  font-size: 14px;
+  color: #fff;
+}
+    
   </style>
 </head>
 
@@ -275,25 +288,60 @@
   -->
 </div>
 
-    <!-- Optional Email Capture -->
-    <form id="emailForm" onsubmit="submitEmail(event)">
-      <input type="email" id="email" placeholder="Your email for updates" required>
-      <button type="submit" class="submit">Sign Up</button>
-    </form>
+    <!-- Email Capture -->
+<form id="emailForm">
+  <input type="email" id="email" placeholder="Your email for updates" required>
+  <button type="submit" class="submit">Sign Up</button>
+</form>
 
-    <div class="small">
-      Thank you for supporting independent music ❤️
-    </div>
-  </div>
+<div id="formMessage" class="small" style="display:none;"></div>
 
-  <script>
-    function submitEmail(e) {
-      e.preventDefault();
-      const email = document.getElementById('email').value;
-      alert(`Thanks! ${email} has been added to the mailing list.`);
-      fbq('track', 'CompleteRegistration');
-      document.getElementById('emailForm').reset();
+<script>
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw0su4Fx6FaDsziKb9K6ab7MZbGd4S0ESDoEBhe9pxHNkT2XYaabQHtxpODEAqygoB_/exec";
+
+  document.getElementById("emailForm").addEventListener("submit", submitEmail);
+
+  async function submitEmail(e) {
+    e.preventDefault();
+
+    const form = document.getElementById("emailForm");
+    const emailInput = document.getElementById("email");
+    const message = document.getElementById("formMessage");
+    const submitButton = form.querySelector(".submit");
+    const email = emailInput.value.trim();
+
+    if (!email) return;
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Signing Up...";
+
+    const formData = new FormData();
+    formData.append("email", email);
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        body: formData
+      });
+
+      if (typeof fbq !== "undefined") {
+        fbq("track", "CompleteRegistration");
+      }
+
+      message.style.display = "block";
+      message.textContent = "Thanks! You’ve been added to the mailing list.";
+      message.style.opacity = "1";
+      form.reset();
+    } catch (error) {
+      console.error("Email signup failed:", error);
+      message.style.display = "block";
+      message.textContent = "Something went wrong. Please try again.";
+      message.style.opacity = "1";
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = "Sign Up";
     }
-  </script>
+  }
+</script>
 </body>
 </html>
