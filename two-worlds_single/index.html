@@ -81,85 +81,94 @@
     }
 
     .streaming-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 1.5rem;
-    }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
 
-    .streaming-links a {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(255, 255, 255, 0.14);
-      color: #fff;
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 14px;
-      border: 1px solid rgba(255,255,255,0.15);
-      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-      backdrop-filter: blur(6px);
-    }
+.streaming-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 14px;
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  backdrop-filter: blur(6px);
+}
 
-    .streaming-links a:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-      background: rgba(255,255,255,0.22);
-    }
+.streaming-links a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  background: rgba(255,255,255,0.22);
+}
 
-    .streaming-links img.platform-icon {
-      width: 18px;
-      height: 18px;
-      object-fit: contain;
-      display: block;
-      background: #fff;
-      border-radius: 4px;
-      padding: 3px;
-    }
+.platform-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 24px;
+}
 
-    .small {
-      margin-top: 1rem;
-      font-size: 14px;
-      opacity: 0.6;
-    }
+.platform-icon svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+  fill: white;
+}
 
-    input[type="email"] {
-      padding: 12px;
-      width: 70%;
-      border-radius: 6px;
-      border: none;
-      margin-bottom: 1rem;
-      font-size: 14px;
-    }
+.platform-spotify {
+  background: #1DB954;
+}
 
-    button.submit {
-      padding: 12px 20px;
-      background: #1DB954;
-      color: black;
-      border: none;
-      border-radius: 6px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
+.platform-bandcamp {
+  background: #629aa9;
+}
 
-    button.submit:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(29,185,84,0.35);
-    }
+.platform-pandora {
+  background: #3668ff;
+}
 
-    @media (max-width: 520px) {
-      .container {
-        padding: 1.5rem;
-      }
+.platform-tidal {
+  background: #111111;
+}
 
-      .streaming-links a {
-        width: 100%;
-        justify-content: center;
-      }
+.platform-apple {
+  background: #fa243c;
+}
+
+.platform-youtube {
+  background: #ff0000;
+}
+
+.platform-amazon {
+  background: #00a8e1;
+}
+
+.platform-deezer {
+  background: linear-gradient(135deg, #ff005d, #ff7a00, #ffd000);
+}
+
+.platform-soundcloud {
+  background: #ff5500;
+}
+
+@media (max-width: 520px) {
+  .streaming-links a {
+    width: 100%;
+    justify-content: center;
+  }
+}
 
       input[type="email"] {
         width: 100%;
@@ -180,54 +189,91 @@
 
     <!-- Streaming Links -->
     <div class="streaming-links">
-      <a href="https://open.spotify.com/track/3cBBF38RVMKqkVFuHVgb5S" target="_blank" onclick="fbq('track', 'Lead');">
-        <img class="platform-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/spotify.svg" alt="Spotify icon">
-        <span>Spotify</span>
-      </a>
+  <a href="https://open.spotify.com/track/3cBBF38RVMKqkVFuHVgb5S" target="_blank" onclick="fbq('track', 'Lead');">
+    <span class="platform-icon platform-spotify" aria-hidden="true">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.503 17.297a.748.748 0 0 1-1.03.247c-2.82-1.723-6.372-2.113-10.56-1.16a.75.75 0 1 1-.333-1.462c4.581-1.043 8.511-.597 11.676 1.336a.748.748 0 0 1 .247 1.039zm1.47-3.27a.936.936 0 0 1-1.288.309c-3.227-1.984-8.146-2.56-11.963-1.402a.938.938 0 0 1-.544-1.795c4.36-1.322 9.78-.684 13.487 1.596.44.27.58.846.308 1.292zm.126-3.406C15.23 8.322 8.852 8.11 5.16 9.23a1.124 1.124 0 1 1-.652-2.15c4.24-1.287 11.292-1.037 15.763 1.617a1.124 1.124 0 0 1-1.172 1.924z"/>
+      </svg>
+    </span>
+    <span>Spotify</span>
+  </a>
 
-      <a href="https://stevemasakowski.bandcamp.com/track/two-worlds" target="_blank">
-        <img class="platform-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/bandcamp.svg" alt="Bandcamp icon">
-        <span>Bandcamp</span>
-      </a>
+  <a href="https://stevemasakowski.bandcamp.com/track/two-worlds" target="_blank">
+    <span class="platform-icon platform-bandcamp" aria-hidden="true">
+      <svg viewBox="0 0 24 24">
+        <path d="M5.04 17.86 9.9 6.14H19L14.14 17.86H5.04z"/>
+      </svg>
+    </span>
+    <span>Bandcamp</span>
+  </a>
 
-      <a href="https://www.pandora.com/TR:195139866" target="_blank">
-        <img class="platform-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/pandora.svg" alt="Pandora icon">
-        <span>Pandora</span>
-      </a>
+  <a href="https://www.pandora.com/TR:195139866" target="_blank">
+    <span class="platform-icon platform-pandora" aria-hidden="true">
+      <svg viewBox="0 0 24 24">
+        <path d="M6 3h5.45C16.44 3 20 6.1 20 10.7c0 4.38-3.2 7.27-7.95 7.27H10.1V21H6V3zm4.1 11.42h1.66c2.35 0 4.08-1.2 4.08-3.57 0-2.25-1.56-3.39-3.85-3.39H10.1v6.96z"/>
+      </svg>
+    </span>
+    <span>Pandora</span>
+  </a>
 
-      <a href="https://listen.tidal.com/track/502653531" target="_blank">
-        <img class="platform-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/tidal.svg" alt="Tidal icon">
-        <span>Tidal</span>
-      </a>
+  <a href="https://listen.tidal.com/track/502653531" target="_blank">
+    <span class="platform-icon platform-tidal" aria-hidden="true">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 4.5 9.5 7 12 9.5 14.5 7 12 4.5zm-5 5L4.5 12 7 14.5 9.5 12 7 9.5zm10 0L14.5 12 17 14.5 19.5 12 17 9.5zm-5 5L9.5 17 12 19.5 14.5 17 12 14.5z"/>
+      </svg>
+    </span>
+    <span>Tidal</span>
+  </a>
 
-      <!-- Uncomment and add your URLs when ready -->
-      <!--
-      <a href="APPLE_MUSIC_LINK" target="_blank">
-        <img class="platform-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/applemusic.svg" alt="Apple Music icon">
-        <span>Apple Music</span>
-      </a>
+  <!-- Uncomment when ready -->
+  <!--
+  <a href="APPLE_MUSIC_LINK" target="_blank">
+    <span class="platform-icon platform-apple" aria-hidden="true">
+      <svg viewBox="0 0 24 24">
+        <path d="M16.365 1.43c0 1.14-.466 2.24-1.14 3.02-.73.84-1.93 1.48-3.02 1.39-.14-1.08.39-2.24 1.09-3 .77-.84 2.02-1.45 3.07-1.41zM19.5 17.07c-.5 1.16-.74 1.67-1.38 2.68-.88 1.39-2.12 3.13-3.65 3.15-1.36.01-1.71-.89-3.56-.88-1.85.01-2.24.9-3.6.89-1.53-.02-2.7-1.59-3.58-2.98-2.46-3.89-2.72-8.46-1.2-10.79 1.08-1.66 2.78-2.64 4.38-2.64 1.63 0 2.66.89 4.01.89 1.31 0 2.11-.89 3.99-.89 1.42 0 2.94.77 4.02 2.09-3.53 1.93-2.96 6.95.57 8.48z"/>
+      </svg>
+    </span>
+    <span>Apple Music</span>
+  </a>
 
-      <a href="YOUTUBE_MUSIC_LINK" target="_blank">
-        <img class="platform-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/youtubemusic.svg" alt="YouTube Music icon">
-        <span>YouTube Music</span>
-      </a>
+  <a href="YOUTUBE_MUSIC_LINK" target="_blank">
+    <span class="platform-icon platform-youtube" aria-hidden="true">
+      <svg viewBox="0 0 24 24">
+        <path d="M10 8.5v7l6-3.5-6-3.5z"/>
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18.2A8.2 8.2 0 1 1 12 3.8a8.2 8.2 0 0 1 0 16.4z"/>
+      </svg>
+    </span>
+    <span>YouTube Music</span>
+  </a>
 
-      <a href="AMAZON_MUSIC_LINK" target="_blank">
-        <img class="platform-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/amazonmusic.svg" alt="Amazon Music icon">
-        <span>Amazon Music</span>
-      </a>
+  <a href="AMAZON_MUSIC_LINK" target="_blank">
+    <span class="platform-icon platform-amazon" aria-hidden="true">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 5.5 6.5 19h2.4l1.15-2.95h4.9L16.1 19h2.4L13 5.5h-1zm.5 3.5 1.6 4.2h-3.2L12.5 9z"/>
+      </svg>
+    </span>
+    <span>Amazon Music</span>
+  </a>
 
-      <a href="DEEZER_LINK" target="_blank">
-        <img class="platform-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/deezer.svg" alt="Deezer icon">
-        <span>Deezer</span>
-      </a>
+  <a href="DEEZER_LINK" target="_blank">
+    <span class="platform-icon platform-deezer" aria-hidden="true">
+      <svg viewBox="0 0 24 24">
+        <path d="M3 15h3v4H3zm4-3h3v7H7zm4-3h3v10h-3zm4 2h3v8h-3zm4-4h3v12h-3z"/>
+      </svg>
+    </span>
+    <span>Deezer</span>
+  </a>
 
-      <a href="SOUNDCLOUD_LINK" target="_blank">
-        <img class="platform-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/soundcloud.svg" alt="SoundCloud icon">
-        <span>SoundCloud</span>
-      </a>
-      -->
-    </div>
+  <a href="SOUNDCLOUD_LINK" target="_blank">
+    <span class="platform-icon platform-soundcloud" aria-hidden="true">
+      <svg viewBox="0 0 24 24">
+        <path d="M9.5 18h9.25a3.25 3.25 0 0 0 .23-6.49 5.25 5.25 0 0 0-10.29-.76A3.25 3.25 0 0 0 9.5 18zM4 10.5h1V18H4zm2 1h1V18H6zm2-2h1V18H8z"/>
+      </svg>
+    </span>
+    <span>SoundCloud</span>
+  </a>
+  -->
+</div>
 
     <!-- Optional Email Capture -->
     <form id="emailForm" onsubmit="submitEmail(event)">
